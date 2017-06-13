@@ -1,0 +1,32 @@
+The pdaXii13 installer also allows you to create a single partition for the entire MicroDrive, or use an improved version of fdisk which can create partitions properly unlike the default fdisk which comes with the Zaurus to manually create your own desired partition scheme. There is also an option provided which allows you to restore your original factory set partition layout.
+
+Before you flash to a new distro, you will first need to prepare the flash medium. For this you will need either a 512MB or 1GB SD/CF card formatted as fat16 (newer versions of Windows will by default format as fat32 instead of fat16 unless you tell it otherwise). Place all the required installation binaries onto the root of the card. The following files are required:
+
+updater.sh
+updater-tools.bin
+zImage-2.4.20.bin
+initrd.bin
+hdimage-full.tgz (see note below)
+Note: You can either use hdimage-base.tgz which gives you a vanilla pdaXrom install with minimal/essential fixes only, hdimage-full.tgz which is a fully customised and polished image with all the customisations as described below, or hdimage-custom.tgz which is a snapshot/backup of a custom system. The installer will pick up any of these names (hdimage-base.tgz, hdimage-full.tgz, hdimage-custom.tgz) so just copy the one you want to the card with the other files listed above. In general, user contributed custom images should be called hdimage-custom.tgz
+
+You need to do the following to get into the Maintenance Menu which is where you can update/install pdaXii13 from:
+
+Unplug everything from your Zaurus, ie power, cards, etc...
+Press the reset button (unlock the battery cover and press the little reset button)
+Put battery lid back on and lock the battery compartment
+Press and hold the OK key while pressing the On/Off button at the front
+You are now in the Maintenance Menu
+To upgrade or flash your distro to pdaXii13, do the following from the Maintenance Menu to get into the pdaXii13 updater menu:
+
+Insert CF or SD (which ever has the install files)
+Plug in the power
+Choose Option 4 (Update) from the Maintenance Menu
+Select your installation source, choose CF or SD
+Confirm your selection (choose option on the left)
+In the pdaXii13 updater menu choose Option 2 to repartition your Zaurus if required (depends on your current partition layout). You will need to reboot your Zaurus once you have repartitioned it and then repeat the above steps to get into the Maintenance Menu again and then into the pdaXii13 updater menu.
+
+From the pdaXii13 updater menu, choose Option 3 "Install kernel and bootloader" to flash your C3000 with a new kernel and boot loader image. If you have a C3100 or C3200 and you want to install Alice onto them instead of Sally, then this option will update your existing system (which has to be pdaXrom beta3 or pdaXii13 Akita base) to boot into the MicroDrive but will not update the kernel nor the rest of the system.
+
+Once the installation has finished, you will need to extract the hdimage.tgz (or one of its variants) onto the MicroDrive. Choose Option 4 for that and wait a while until it formats your first partition as ext3 and extracts the content of the tgz file onto the first partition of your MicroDrive.
+
+Then choose the last option (Option 6) to reboot and pdaXii13 should be installed and boot into X windows. OpenBox will be the default X window manager just like in the default pdaXrom beta3. During your first boot, your SSL private and public keys will be generated which will take a while.
